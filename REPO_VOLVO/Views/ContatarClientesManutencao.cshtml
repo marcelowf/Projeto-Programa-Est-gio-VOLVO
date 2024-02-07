@@ -1,0 +1,38 @@
+@model Dictionary<TRABALHO_VOLVO.Cliente, List<TRABALHO_VOLVO.Caminhao>>;
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista Clientes</title>
+</head>
+<body>
+    <h2>Lista de Clientes Para Contatar</h2>
+
+    <table>
+        <tr>
+            <th>Nome</th>
+            <th>CPF/CNPJ</th>
+            <th>Email</th>
+            <th>Telefone</th>
+            <th>Caminhao(oes)</th>
+        </tr>
+        @foreach (var pair in Model)
+        {
+            <tr>
+                <td>@pair.Key.NomeCliente</td>
+                <td>@pair.Key.DocIdentificadorCliente</td>
+                <td>@pair.Key.EmailCliente</td>
+                <td>@pair.Key.NumeroContatoCliente</td>
+                <td>
+                    <ul>
+                        @foreach(var caminhao in @pair.Value)
+                        {
+                            <li>Codigo caminhao -@caminhao.CodCaminhao</li>
+                        }
+                    </ul>
+                </td>
+            </tr>
+        }
+    </table>
+</body>
+</html>
